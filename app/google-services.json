@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "842800456384",
+    "project_id": "appfood-59d76",
+    "storage_bucket": "appfood-59d76.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:842800456384:android:8916007c1d2f03d0bf0325",
+        "android_client_info": {
+          "package_name": "com.example.ttcm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "842800456384-7iapu7de4tld7gvjv0u84228rtbklunr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ttcm",
+            "certificate_hash": "5f701a6a789fd581b35c5b348af89ad41b09fea4"
+          }
+        },
+        {
+          "client_id": "842800456384-mf16rsnrrga6jnftemc9ndne5a82g7oq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbld7TIN4oqqYHivAFiMoLJ9H14tpbD9I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "842800456384-mf16rsnrrga6jnftemc9ndne5a82g7oq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
