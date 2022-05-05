@@ -44,7 +44,7 @@
         android:layout_marginLeft="60dp"
         android:layout_marginTop="80dp"
         android:background="@drawable/botron"
-        android:drawableLeft="@android:drawable/sym_action_email"
+        android:drawableLeft="@drawable/ic_baseline_email_24"
         android:drawablePadding="20dp"
         android:hint="Email"
         android:inputType="textPersonName"
@@ -54,14 +54,15 @@
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/edtPass"
+        android:id="@+id/edtPass"re
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_below="@id/edtEmail"
         android:layout_marginLeft="60dp"
         android:layout_marginTop="23dp"
         android:background="@drawable/botron"
-        android:drawableLeft="@android:drawable/ic_lock_lock"
+        android:drawableLeft="@drawable/ic_baseline_lock_24"
+        android:drawableRight="@drawable/ic_baseline_visibility_24"
         android:drawablePadding="20dp"
         android:hint="Password"
         android:inputType="textPersonName"
@@ -90,14 +91,14 @@
 
     <EditText
         android:id="@+id/edtPass"
-        e
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_below="@id/edtEmail"
         android:layout_marginLeft="60dp"
         android:layout_marginTop="94dp"
         android:background="@drawable/botron"
-        android:drawableLeft="@android:drawable/ic_lock_lock"
+        android:drawableLeft="@drawable/ic_baseline_lock_24"
+        android:drawableRight="@drawable/ic_baseline_visibility_24"
         android:drawablePadding="20dp"
         android:hint="Re-Password"
         android:inputType="textPersonName"

@@ -45,7 +45,7 @@
         android:layout_marginLeft="60dp"
         android:layout_marginTop="80dp"
         android:background="@drawable/botron"
-        android:drawableLeft="@android:drawable/sym_action_email"
+        android:drawableLeft="@drawable/ic_baseline_email_24"
         android:drawablePadding="20dp"
         android:hint="Email"
         android:inputType="textPersonName"
@@ -62,14 +62,16 @@
         android:layout_marginLeft="60dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/botron"
-        android:drawableLeft="@android:drawable/ic_lock_lock"
+        android:drawableRight="@drawable/ic_baseline_visibility_24"
+        android:drawableLeft="@drawable/ic_baseline_lock_24"
         android:drawablePadding="20dp"
         android:hint="Password"
         android:inputType="textPersonName"
         android:padding="10dp"
         android:textColor="@color/black"
         android:textColorHint="#A6000000"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        app:endIconMode="password_toggle" />
 
     <TextView
         android:id="@+id/tvForgotPassword"
@@ -100,6 +102,7 @@
         android:text="Login"
         android:textSize="20sp" />
 
+
     <ImageView
         android:id="@+id/Facebook"
         android:layout_width="120px"
@@ -122,12 +125,12 @@
 
     <ImageView
         android:id="@+id/food"
-        android:layout_width="97dp"
-        android:layout_height="wrap_content"
+        android:layout_width="99dp"
+        android:layout_height="107dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="157dp"
-        android:layout_marginBottom="633dp"
+        android:layout_marginEnd="141dp"
+        android:layout_marginBottom="621dp"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/food1" />
 
