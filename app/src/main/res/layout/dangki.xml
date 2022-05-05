@@ -5,7 +5,6 @@
     android:id="@+id/imgFacebook"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:background="@drawable/nen"
     tools:context=".MainActivity">
 
@@ -60,7 +59,7 @@
         android:layout_height="50dp"
         android:layout_below="@id/edtEmail"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="23dp"
         android:background="@drawable/botron"
         android:drawableLeft="@android:drawable/ic_lock_lock"
         android:drawablePadding="20dp"
@@ -71,18 +70,40 @@
         android:textColorHint="#A6000000"
         android:textSize="20sp" />
 
+
     <TextView
         android:id="@+id/tvForgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnLogin"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="130dp"
-        android:layout_marginTop="-10dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginTop="630dp"
+        android:layout_marginEnd="129dp"
+        android:layout_marginBottom="79dp"
         android:gravity="center"
         android:text="Forgot Password"
         android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/edtPass"
+        e
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/edtEmail"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="94dp"
+        android:background="@drawable/botron"
+        android:drawableLeft="@android:drawable/ic_lock_lock"
+        android:drawablePadding="20dp"
+        android:hint="Re-Password"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="#A6000000"
         android:textSize="20sp" />
 
     <com.google.android.material.button.MaterialButton
@@ -100,14 +121,15 @@
         android:text="Login"
         android:textSize="20sp" />
 
+
     <ImageView
         android:id="@+id/Facebook"
         android:layout_width="120px"
         android:layout_height="120px"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="145dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginStart="146dp"
+        android:layout_marginBottom="20dp"
         app:srcCompat="@drawable/facebook" />
 
     <ImageView
@@ -116,8 +138,8 @@
         android:layout_height="120px"
         android:layout_alignEnd="@+id/Facebook"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="-81dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginEnd="-84dp"
+        android:layout_marginBottom="20dp"
         app:srcCompat="@drawable/twitter" />
 
     <ImageView
