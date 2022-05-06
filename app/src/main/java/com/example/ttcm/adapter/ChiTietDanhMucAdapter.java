@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ttcm.R;
-import com.example.ttcm.activity.Mon;
+import com.example.ttcm.data.Mon;
 
 import java.util.ArrayList;
 

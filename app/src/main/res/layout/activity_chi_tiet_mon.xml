@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:descendantFocusability="blocksDescendants"
-    tools:context=".ChiTietMonActivity">
+    tools:context=".activity.ChiTietMonActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_Chitietmon"
         app:title="Chi tiết món"

@@ -59,15 +59,7 @@ public class DanhMucActivity extends AppCompatActivity {
         thongbao_soluong = findViewById(R.id.thongbao_soluong);
         gridview_danhmuc = findViewById(R.id.gridView_DanhMuc);
 
-//
         db = new DatHangDB(this,"DatHangDB.sqlite",null,2);
-//        db.queryData("Create table if not exists DanhMuc (idDanhMuc Text Primary Key, tenDanhMuc Text, imgDanhMuc int)");
-//        db.insertDanhMuc("DM001","Món chính", R.drawable.monchinh);
-//        db.insertDanhMuc("DM002","Ăn vặt", R.drawable.anvat);
-//        db.insertDanhMuc("DM003","Đồ uống", R.drawable.douong);
-//        db.insertDanhMuc("DM004","Món chay", R.drawable.monchay);
-//////
-//
         Cursor cursor = DanhMucActivity.db.getData("Select * from DanhMuc");
         while(cursor.moveToNext()){
             String idDanhMuc = cursor.getString(0);

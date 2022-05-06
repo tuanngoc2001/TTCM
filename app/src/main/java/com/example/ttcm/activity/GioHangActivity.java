@@ -71,29 +71,28 @@ public class GioHangActivity extends AppCompatActivity {
 
 
 
-//        db = new DatHangDB(this,"DatHangDB.sqlite",null,2);
-//
-//        //db.queryData("Create table if not exists GioHang (TenMon Text, Gia int, soluong int, imgMon int)");
-//        if(getTenMonThanhToan!=null)
-//            db.inserGioHang(getTenMonThanhToan,getGiaThanhToan,getSLThanhToan,getImgMonThanhToan);
-//     Cursor cursor = MainActivity.db.getData("Select * from GioHang");
-//        while(cursor.moveToNext()){
-//
-//            String tenMon = cursor.getString(0);
-//            int gia = cursor.getInt(1);
-//            int sl = cursor.getInt(2);
-//            int img = cursor.getInt(3);
-//            arrayMonAn.add(new MonAnThanhToan(tenMon, gia,gia*sl,sl,img,R.drawable.ic_xoa,R.drawable.daucong1,R.drawable.ic_dautru));
-//        }
-//
-//        // arrayMonAn.add(new MonAn("Cơm tấm sà bì chưởng","10000đ","40000đ","2",R.drawable.anhmon,R.drawable.daucong1,R.drawable.daucong1,R.drawable.daucong1));
-//        //arrayMonAn.add(new MonAn(getTenMonThanhToan,String.valueOf(getGiaThanhToan),"test",String.valueOf(getSLThanhToan),getImgMonThanhToan,R.drawable.daucong1,R.drawable.daucong1,R.drawable.daucong1));
-//        adapter = new MonAnAdapter(this,
-//                R.layout.layout_giohang,
-//                arrayMonAn);
-//
-//        listView.setAdapter(adapter);
-//        EvenUltil();
+        db = new DatHangDB(this,"DatHangDB.sqlite",null,2);
+//        db.queryData("Create table if not exists GioHang (TenMon Text, Gia int, soluong int, imgMon int)");
+        if(getTenMonThanhToan!=null)
+            db.inserGioHang(getTenMonThanhToan,getGiaThanhToan,getSLThanhToan,getImgMonThanhToan);
+        Cursor cursor = MainActivity.db.getData("Select * from GioHang");
+        while(cursor.moveToNext()){
+
+            String tenMon = cursor.getString(0);
+            int gia = cursor.getInt(1);
+            int sl = cursor.getInt(2);
+            int img = cursor.getInt(3);
+            arrayMonAn.add(new MonAnThanhToan(tenMon, gia,gia*sl,sl,img,R.drawable.ic_xoa,R.drawable.ic_daucong,R.drawable.ic_dautru));
+        }
+
+        // arrayMonAn.add(new MonAn("Cơm tấm sà bì chưởng","10000đ","40000đ","2",R.drawable.anhmon,R.drawable.daucong1,R.drawable.daucong1,R.drawable.daucong1));
+        //arrayMonAn.add(new MonAn(getTenMonThanhToan,String.valueOf(getGiaThanhToan),"test",String.valueOf(getSLThanhToan),getImgMonThanhToan,R.drawable.daucong1,R.drawable.daucong1,R.drawable.daucong1));
+        adapter = new MonAnAdapter(this,
+                R.layout.layout_giohang,
+                arrayMonAn);
+
+        listView.setAdapter(adapter);
+        EvenUltil();
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {

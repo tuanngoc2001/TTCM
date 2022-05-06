@@ -85,12 +85,4 @@ public class DatHangDB extends SQLiteOpenHelper {
         statement.bindString(4, String.valueOf(gia));
         statement.executeInsert();
     }
-//    public void deleteDanhMuc(String idDelete){
-//        SQLiteDatabase db = getWritableDatabase();
-//        String sql = "Delete from DanhMuc where idDanhMuc = idDelete";
-//
-//        SQLiteStatement statement = db.compileStatement(sql);
-//        statement.clearBindings();
-//        statement.executeUpdateDelete();
-//    }
 }

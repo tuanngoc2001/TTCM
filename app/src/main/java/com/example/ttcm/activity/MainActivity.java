@@ -7,6 +7,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     MonAnTrangChuAdapter adaptertrangchu;
     ArrayList<MonAnTrangChu> arrayListmonan=new ArrayList<>();
 
-    //public static DatHangDB db;
+    public static DatHangDB db;
 
     //add du lieu vao recycle
     ListView listview;
@@ -59,22 +60,7 @@ public class MainActivity extends AppCompatActivity {
         adddrawer();
         addEven();
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("im_User")
-                .whereEqualTo("username", "admin")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Toast.makeText(MainActivity.this,document.getData().toString(),Toast.LENGTH_SHORT).show();
-                            }
-                        } else {
-                           //Log.d(TAG, "Error getting documents: ", task.getException());
-                        }
-                    }
-                });
+
     }
 
     private void addEven() {
@@ -97,17 +83,17 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-//        grmonantrangchu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Intent intent = new Intent(MainActivity.this,ChiTietMonActivity.class);
-//                ChiTietMonActivity.getTenMon = arrayListmonan.get(i).getName();
-//                ChiTietMonActivity.getImgMon = arrayListmonan.get(i).getImage();
-//                ChiTietMonActivity.getGia = arrayListmonan.get(i).getPrice();
-//                ChiTietMonActivity.getMoTa = arrayListmonan.get(i).getDecription();
-//                startActivity(intent);
-//            }
-//        });
+        grmonantrangchu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(MainActivity.this,ChiTietMonActivity.class);
+                ChiTietMonActivity.getTenMon = arrayListmonan.get(i).getName();
+                ChiTietMonActivity.getImgMon = arrayListmonan.get(i).getImage();
+                ChiTietMonActivity.getGia = arrayListmonan.get(i).getPrice();
+                ChiTietMonActivity.getMoTa = arrayListmonan.get(i).getDecription();
+                startActivity(intent);
+            }
+        });
     }
 
     private void adddrawer() {
@@ -137,12 +123,6 @@ public class MainActivity extends AppCompatActivity {
         listview.setAdapter(adapter);
 
 
-//        db.insertMonAn("MA001", "DM001","Cơm tấm sườn",R.drawable.comtamsuon,"Cơm tấm sườn siêu ngon có cơm và miếng sườn",25000);
-//        db.insertMonAn("MA002", "DM001","Cơm tấm sườn trứng",R.drawable.comtamsuontrung,"Cơm tấm sườn siêu ngon có cơm, miếng sườn và miếng trứng",27000);
-//        db.insertMonAn("MA003", "DM001","Cơm gà xối mỡ",R.drawable.comgaxoimo,;."Đĩa cơm gà bắt mắt với phần cơm vừa đủ ăn, thịt gà trộn bày lên trên",30000);
-
-
-
 
 
         viewFlipper=findViewById(R.id.viewFlipper);
@@ -152,30 +132,34 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        //monan trang chu
-//          grmonantrangchu=findViewById(R.id.lstmonan);
+        grmonantrangchu=findViewById(R.id.lstmonan);
+        db = new DatHangDB(this,"DatHangDB.sqlite",null,2);
+
+//        db.queryData("Create table if not exists DanhMuc (idDanhMuc Text Primary Key, tenDanhMuc Text, imgDanhMuc int)");
+//        db.insertDanhMuc("DM001","Món chính", R.drawable.monchinh);
+//        db.insertDanhMuc("DM002","Ăn vặt", R.drawable.anvat);
+//        db.insertDanhMuc("DM003","Đồ uống", R.drawable.douong);
+//        db.insertDanhMuc("DM004","Món chay", R.drawable.monchay);
 //
-//          db = new DatHangDB(this,"DatHangDB.sqlite",null,2);
-//
-//          db.queryData("Create table if not exists MonAn (idMon Text Primary Key, idDanhMuc Text, tenMon Text, imgMonAn int, moTa String, gia int)");
+//        db.queryData("Create table if not exists MonAn (idMon Text Primary Key, idDanhMuc Text, tenMon Text, imgMonAn int, moTa String, gia int)");
 //        db.insertMonAn("MA001", "DM001","Cơm tấm sườn",R.drawable.comtamsuon,"Cơm tấm sườn siêu ngon có cơm và miếng sườn",25000);
 //        db.insertMonAn("MA002", "DM001","Cơm tấm sườn trứng",R.drawable.comtamsuontrung,"Cơm tấm sườn siêu ngon có cơm, miếng sườn và miếng trứng",27000);
 //        db.insertMonAn("MA003", "DM001","Cơm gà xối mỡ",R.drawable.comgaxoimo,"Đĩa cơm gà bắt mắt với phần cơm vừa đủ ăn, thịt gà trộn bày lên trên",30000);
-//
-//
-//        Cursor cursor = MainActivity.db.getData("Select * from MonAn");
-//        while(cursor.moveToNext()){
-//            String idMon = cursor.getString(0);
-//            String idDanhMuc = cursor.getString(1);
-//            String tenMon = cursor.getString(2);
-//            int imgMon = cursor.getInt(3);
-//            String moTa = cursor.getString(4);
-//            int gia = cursor.getInt(5);
-//            arrayListmonan.add(new MonAnTrangChu(tenMon, moTa,imgMon,gia));
-//        }
-//        adaptertrangchu=new MonAnTrangChuAdapter(R.layout.monantrangchu,MainActivity.this,arrayListmonan);
-//        adapter.notifyDataSetChanged();
-//        grmonantrangchu.setAdapter(adaptertrangchu);
+
+
+        Cursor cursor = MainActivity.db.getData("Select * from MonAn");
+        while(cursor.moveToNext()){
+            String idMon = cursor.getString(0);
+            String idDanhMuc = cursor.getString(1);
+            String tenMon = cursor.getString(2);
+            int imgMon = cursor.getInt(3);
+            String moTa = cursor.getString(4);
+            int gia = cursor.getInt(5);
+            arrayListmonan.add(new MonAnTrangChu(tenMon, moTa,imgMon,gia));
+        }
+        adaptertrangchu=new MonAnTrangChuAdapter(R.layout.monantrangchu,MainActivity.this,arrayListmonan);
+        adapter.notifyDataSetChanged();
+        grmonantrangchu.setAdapter(adaptertrangchu);
 
 
 

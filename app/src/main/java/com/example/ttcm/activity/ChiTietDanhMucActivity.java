@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.ttcm.R;
 import com.example.ttcm.adapter.ChiTietDanhMucAdapter;
 import com.example.ttcm.data.DatHangDB;
+import com.example.ttcm.data.Mon;
 
 import java.util.ArrayList;
 
@@ -42,13 +43,6 @@ public class ChiTietDanhMucActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ChiTietDanhMucActivity.this,ChiTietMonActivity.class);
-//                intent.putExtra("idMon",list_Mon.get(position).getId());
-//                intent.putExtra("idDanhMuc",list_Mon.get(position).getMadanhmuc());
-//                intent.putExtra("tenMon",list_Mon.get(position).getTenmon());
-//                intent.putExtra("imgMon",list_Mon.get(position).getHinhmon());
-//                intent.putExtra("moTa",list_Mon.get(position).getMota());
-//                intent.putExtra("gia",list_Mon.get(position).getGia());
-
                 ChiTietMonActivity.getTenMon = list_Mon.get(position).getTenmon();
                 ChiTietMonActivity.getImgMon = list_Mon.get(position).getHinhmon();
                 ChiTietMonActivity.getGia = list_Mon.get(position).getGia();
@@ -79,13 +73,8 @@ public class ChiTietDanhMucActivity extends AppCompatActivity {
 //        list_Mon.add(new Mon(001,001,"Test",R.drawable.custom_input,"mota","15000"));
 //        list_Mon.add(new Mon(001,001,"Test",R.drawable.custom_input,"mota","15000"));
 
+
         db = new DatHangDB(this,"DatHangDB.sqlite",null,2);
-        //db.queryData("Create table if not exists MonAn (idMon Text Primary Key, idDanhMuc Text, tenMon Text, imgMonAn int, moTa String, gia int)");
-//        db.insertMonAn("MA001", "DM001","Cơm tấm sườn",R.drawable.comtamsuon,"Cơm tấm sườn siêu ngon có cơm và miếng sườn",25000);
-//        db.insertMonAn("MA002", "DM001","Cơm tấm sườn trứng",R.drawable.comtamsuontrung,"Cơm tấm sườn siêu ngon có cơm, miếng sườn và miếng trứng",27000);
-//        db.insertMonAn("MA003", "DM001","Cơm gà xối mỡ",R.drawable.comgaxoimo,"Đĩa cơm gà bắt mắt với phần cơm vừa đủ ăn, thịt gà trộn bày lên trên",30000);
-
-
         Cursor cursor = ChiTietDanhMucActivity.db.getData("Select * from MonAn where idDanhMuc = '"+getIdDanhMuc+"'")  ;
         while(cursor.moveToNext()){
             String idMon = cursor.getString(0);

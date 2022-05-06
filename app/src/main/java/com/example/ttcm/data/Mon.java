@@ -1,5 +1,8 @@
 package com.example.ttcm.data;
 
+import androidx.room.Entity;
+import androidx.room.RoomMasterTable;
+
 public class Mon {
     private String id;
     private String madanhmuc;

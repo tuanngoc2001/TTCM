@@ -1,6 +1,7 @@
 package com.example.ttcm.activity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -85,6 +86,7 @@ public class ChiTietMonActivity extends AppCompatActivity {
         list_soluong.add(50);
         list_soluong.add(100);
 
+//        db = new DatHangDB(this,"DatHangDB.sqlite",null,2);
 //        Cursor cursor = ChiTietMonActivity.db.getData("Select * from MonAn where idMon = "+getIdMon+"");
 //        String idMon = cursor.getString(0);
 //        String idDanhMuc = cursor.getString(1);
@@ -111,15 +113,4 @@ public class ChiTietMonActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        Intent intent = getIntent();
-//        getIdMon = intent.getStringExtra("idMon");
-//        getIdDanhMuc = intent.getStringExtra("idDanhMuc");
-//        getTenMon = intent.getStringExtra("tenMon");
-//        getMoTa = intent.getStringExtra("moTa");
-//        getImgMon = intent.getIntExtra("imgMon",0);
-//        getGia = intent.getIntExtra("gia",0);
-//    }
 }
