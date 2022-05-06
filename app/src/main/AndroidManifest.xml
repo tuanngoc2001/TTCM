@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ttcm">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +13,36 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TTCM">
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.GioiThieuChungActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ThongtinKhachHangActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ThongbaoThanhToanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ThanhToanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.LienHeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.GioHangActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ChiTietDanhMucActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.DanhMucActivity"
+            android:exported="false" />
+        <activity android:name=".activity.MainActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".activity.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

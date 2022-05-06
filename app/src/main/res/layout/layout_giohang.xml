@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginBottom="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:elevation="10dp"
+    app:cardCornerRadius="8dp"
+    android:layout_width="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:background="#FCFAD3"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.cardview.widget.CardView
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:elevation="10dp"
+            app:cardCornerRadius="8dp"
+            android:layout_width="80dp"
+            android:layout_height="65dp">
+            <ImageView
+                android:id="@+id/hinhmonan"
+                android:src="@mipmap/ic_launcher"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </androidx.cardview.widget.CardView>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            //Linear main
+            <LinearLayout
+                android:id="@+id/linear_main"
+                android:visibility="visible"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/txtTenMon"
+                    android:paddingTop="3dp"
+                    android:singleLine="true"
+                    android:textColor="#5F7C4C"
+                    android:text="Ten mon"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/txtGiaMon"
+                        android:text="30000 đ"
+                        android:textColor="@color/white"
+                        android:background="#FD5A5A"
+                        android:textSize="14dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <FrameLayout
+                        android:layout_marginLeft="5dp"
+                        android:layout_gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/txtThanhTien"
+                            android:layout_gravity="end"
+                            android:layout_marginRight="5dp"
+                            android:text="90000 đ"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </FrameLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:paddingTop="10dp"
+                        android:paddingBottom="5dp"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageButton
+                            android:onClick="giamSLmon"
+                            android:id="@+id/hinhdautru"
+                            android:src="@drawable/ic_dautru"
+                            android:layout_marginRight="5dp"
+                            android:padding="5dp"
+                            android:background="@drawable/custom_button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <!--                        <TextView-->
+                        <!--                            android:id="@+id/txtSoLuongMon"-->
+                        <!--                            android:layout_gravity="center"-->
+                        <!--                            android:textAlignment="center"-->
+                        <!--                            android:background="@drawable/custom_soluong"-->
+                        <!--                            android:paddingTop="5dp"-->
+                        <!--                            android:paddingBottom="5dp"-->
+                        <!--                            android:text="3"-->
+                        <!--                            android:textColor="@color/black"-->
+                        <!--                            android:layout_width="55dp"-->
+                        <!--                            android:layout_height="wrap_content"/>-->
+                        <TextView
+                            android:id="@+id/txtSoLuongMon"
+                            android:textAlignment="center"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:text="textview"
+                            android:textStyle="bold"
+                            android:layout_width="55dp"
+                            android:layout_height="wrap_content"></TextView>
+
+                        <ImageButton
+                            android:onClick="tangSLmon"
+                            android:id="@+id/hinhdaucong"
+                            android:src="@drawable/ic_daucong"
+                            android:layout_marginLeft="5dp"
+                            android:padding="5dp"
+                            android:background="@drawable/custom_button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"></ImageButton>
+                    </LinearLayout>
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <FrameLayout
+                            android:id="@+id/frameLayout"
+                            android:layout_gravity="bottom|right"
+                            android:backgroundTint="#D4D3B4"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp">
+                            <ImageView
+                                android:id="@+id/hinhdauxoa"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_xoa"
+                                android:layout_margin="5dp"
+                                android:padding="5dp"
+                                android:background="@drawable/custom_buttonxoa"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </FrameLayout>
+                    </FrameLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            //Linear notify
+            <!--            <LinearLayout-->
+            <!--                android:id="@+id/linear_notify"-->
+            <!--                android:visibility="invisible"-->
+            <!--                android:background="@drawable/custom_giohang"-->
+            <!--                android:orientation="vertical"-->
+            <!--                android:layout_marginTop="10dp"-->
+            <!--                android:layout_marginBottom="10dp"-->
+            <!--                android:layout_marginRight="10dp"-->
+            <!--                android:layout_marginLeft="5dp"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="match_parent">-->
+            <!--                <TextView-->
+            <!--                    android:gravity="center"-->
+            <!--                    android:textColor="#D25C4E"-->
+            <!--                    android:padding="5dp"-->
+            <!--                    android:textStyle="bold"-->
+            <!--                    android:textSize="15dp"-->
+            <!--                    android:text="Bạn có muốn xóa món này"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"/>-->
+            <!--                <FrameLayout-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="match_parent">-->
+            <!--                    <RelativeLayout-->
+            <!--                        android:layout_gravity="center"-->
+            <!--                        android:paddingTop="10dp"-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="match_parent">-->
+            <!--                        <TextView-->
+            <!--                            android:id="@+id/btn_yes"-->
+            <!--                            android:layout_width="wrap_content"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:layout_marginLeft="10dp"-->
+            <!--                            android:layout_marginRight="5dp"-->
+            <!--                            android:background="@drawable/custom_button"-->
+            <!--                            android:gravity="center"-->
+            <!--                            android:paddingTop="10dp"-->
+            <!--                            android:paddingBottom="10dp"-->
+            <!--                            android:paddingLeft="20dp"-->
+            <!--                            android:paddingRight="20dp"-->
+            <!--                            android:text="Đồng ý"-->
+            <!--                            android:textAllCaps="false"-->
+            <!--                            android:textColor="@color/white"-->
+            <!--                            android:textStyle="bold" />-->
+
+            <!--                        <TextView-->
+            <!--                            android:id="@+id/btn_no"-->
+            <!--                            android:layout_width="wrap_content"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:layout_marginLeft="5dp"-->
+            <!--                            android:layout_marginRight="10dp"-->
+            <!--                            android:layout_toEndOf="@+id/btn_yes"-->
+            <!--                            android:background="@drawable/custom_khongbiet"-->
+            <!--                            android:gravity="center"-->
+            <!--                            android:paddingTop="10dp"-->
+            <!--                            android:paddingBottom="10dp"-->
+            <!--                            android:paddingLeft="20dp"-->
+            <!--                            android:paddingRight="20dp"-->
+            <!--                            android:text="Không"-->
+            <!--                            android:textAllCaps="false"-->
+            <!--                            android:textColor="FFFFE5"-->
+            <!--                            android:textStyle="bold" />-->
+            <!--                    </RelativeLayout>-->
+            <!--                </FrameLayout>-->
+
+            <!--            </LinearLayout>-->
+        </FrameLayout>
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
