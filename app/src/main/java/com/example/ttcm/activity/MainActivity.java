@@ -1,5 +1,6 @@
 package com.example.ttcm.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -12,13 +13,19 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.example.ttcm.R;
 import com.example.ttcm.adapter.DrawerAdapter;
 import com.example.ttcm.adapter.MonAnTrangChuAdapter;
 import com.example.ttcm.data.DatHangDB;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
@@ -31,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     MonAnTrangChuAdapter adaptertrangchu;
     ArrayList<MonAnTrangChu> arrayListmonan=new ArrayList<>();
 
-    public static DatHangDB db;
+    //public static DatHangDB db;
 
     //add du lieu vao recycle
     ListView listview;
@@ -51,6 +58,23 @@ public class MainActivity extends AppCompatActivity {
         addControll();
         adddrawer();
         addEven();
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("im_User")
+                .whereEqualTo("username", "admin")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Toast.makeText(MainActivity.this,document.getData().toString(),Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                           //Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
     }
 
     private void addEven() {
