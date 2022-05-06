@@ -43,7 +43,7 @@
         android:layout_height="50dp"
         android:layout_below="@id/tvSignUp"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="89dp"
         android:background="@drawable/botron"
         android:drawableLeft="@drawable/ic_baseline_email_24"
         android:drawablePadding="20dp"
@@ -60,10 +60,10 @@
         android:layout_height="50dp"
         android:layout_below="@id/edtEmail"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/botron"
-        android:drawableRight="@drawable/ic_baseline_visibility_24"
         android:drawableLeft="@drawable/ic_baseline_lock_24"
+        android:drawableRight="@drawable/ic_baseline_visibility_24"
         android:drawablePadding="20dp"
         android:hint="Password"
         android:inputType="textPersonName"
@@ -87,6 +87,7 @@
         android:textColor="@color/black"
         android:textSize="20sp" />
 
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSignUp"
         android:layout_width="wrap_content"
@@ -94,14 +95,13 @@
         android:layout_below="@id/edtPass"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="41dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/botron"
         android:backgroundTint="#124E15"
         android:text="Login"
         android:textSize="20sp" />
-
 
     <ImageView
         android:id="@+id/Facebook"
