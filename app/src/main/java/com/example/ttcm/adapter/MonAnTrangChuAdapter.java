@@ -10,15 +10,17 @@ import android.widget.TextView;
 
 import com.example.ttcm.R;
 import com.example.ttcm.activity.MonAnTrangChu;
+import com.example.ttcm.model.Product;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class MonAnTrangChuAdapter extends BaseAdapter {
     private int layout;
     private Context context;
-    private List<MonAnTrangChu> lst;
+    private List<Product> lst;
 
-    public MonAnTrangChuAdapter(int layout, Context context, List<MonAnTrangChu> lst) {
+    public MonAnTrangChuAdapter(int layout, Context context, List<Product> lst) {
         this.layout = layout;
         this.context = context;
         this.lst = lst;
@@ -49,11 +51,11 @@ public class MonAnTrangChuAdapter extends BaseAdapter {
         TextView txtten=view.findViewById(R.id.tenmon);
         TextView txtmota=view.findViewById(R.id.mota);
 
-
-        img.setImageResource(lst.get(i).getImage());
+        Picasso.get().load(lst.get(i).getUrlImage()).into(img);
+        //img.setImageResource(lst.get(i).getImage());
         txtgia.setText(String.valueOf(lst.get(i).getPrice()));
         txtten.setText(lst.get(i).getName());
-        txtmota.setText(lst.get(i).getDecription());
+        txtmota.setText(lst.get(i).getTitle());
 
         return view;
     }

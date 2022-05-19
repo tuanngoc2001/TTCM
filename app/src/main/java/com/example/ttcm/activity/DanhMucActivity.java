@@ -13,9 +13,16 @@ import android.widget.TextView;
 
 import com.example.ttcm.R;
 import com.example.ttcm.adapter.DanhMucAdapter;
-import com.example.ttcm.data.DatHangDB;
+import com.example.ttcm.model.Category;
+import com.example.ttcm.model.Product;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class DanhMucActivity extends AppCompatActivity {
 
@@ -23,9 +30,8 @@ public class DanhMucActivity extends AppCompatActivity {
     TextView thongbao_soluong;
 
     GridView gridview_danhmuc;
-    ArrayList<DanhMuc> list_DanhMuc = new ArrayList<>();
+    ArrayList<Category> list_DanhMuc = new ArrayList<>();
     DanhMucAdapter adapter;
-    public static DatHangDB db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,16 +65,28 @@ public class DanhMucActivity extends AppCompatActivity {
         thongbao_soluong = findViewById(R.id.thongbao_soluong);
         gridview_danhmuc = findViewById(R.id.gridView_DanhMuc);
 
-        db = new DatHangDB(this,"DatHangDB.sqlite",null,2);
-        Cursor cursor = DanhMucActivity.db.getData("Select * from DanhMuc");
-        while(cursor.moveToNext()){
-            String idDanhMuc = cursor.getString(0);
-            String tenDanhMuc = cursor.getString(1);
-            int imgDanhMuc = cursor.getInt(2);
-            list_DanhMuc.add(new DanhMuc(idDanhMuc, tenDanhMuc, imgDanhMuc));
-        }
-        adapter = new DanhMucAdapter(this, list_DanhMuc);
+
+
+        adapter = new DanhMucAdapter(DanhMucActivity.this, list_DanhMuc);
         gridview_danhmuc.setAdapter(adapter);
+
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Category").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                if(!queryDocumentSnapshots.isEmpty())
+                {
+                    List<DocumentSnapshot> lst=queryDocumentSnapshots.getDocuments();
+                    for(DocumentSnapshot item:lst)
+                    {
+                        list_DanhMuc.add(new Category(Objects.requireNonNull(item.get("Id")).toString(), Objects.requireNonNull(item.get("Name")).toString(), Objects.requireNonNull(item.get("Image")).toString()));
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+            }
+        });
+
         adapter.notifyDataSetChanged();
 
     }

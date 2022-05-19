@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.example.ttcm.activity.DanhMucActivity;
 import com.example.ttcm.activity.DanhMuc;
 import com.example.ttcm.R;
+import com.example.ttcm.model.Category;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -19,11 +21,11 @@ public class DanhMucAdapter extends BaseAdapter {
     //1. ngữ cảnh của ứng dụng
     Activity activity;
     //2. nguồn dữ liệu
-    ArrayList<DanhMuc> data;
+    ArrayList<Category> data;
     //3. bộ phân tích layout
     LayoutInflater inflater;
 
-    public DanhMucAdapter(Activity activity, ArrayList<DanhMuc> data) {
+    public DanhMucAdapter(Activity activity, ArrayList<Category> data) {
         this.activity = activity;
         this.data = data;
         inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -53,8 +55,8 @@ public class DanhMucAdapter extends BaseAdapter {
             //tham chiếu tới từng view để hiển thị dữ liệu
             ImageView imgHinh = v.findViewById(R.id.imgDanhMuc);
             TextView txtDanhMuc = v.findViewById(R.id.txtDanhMuc);
-            imgHinh.setImageResource(data.get(position).getHinhdanhmuc());
-            txtDanhMuc.setText(data.get(position).getTendanhmuc());
+            Picasso.get().load(data.get(position).getImage()).into(imgHinh);
+            txtDanhMuc.setText(data.get(position).getName());
         }
         return v;
     }

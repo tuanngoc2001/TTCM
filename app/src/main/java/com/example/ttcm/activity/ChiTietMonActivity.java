@@ -1,7 +1,6 @@
 package com.example.ttcm.activity;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -13,9 +12,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.example.ttcm.data.DatHangDB;
 import com.example.ttcm.R;
-import com.example.ttcm.data.DatHangDB;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -29,12 +27,12 @@ public class ChiTietMonActivity extends AppCompatActivity {
     ArrayList<Integer> list_soluong = new ArrayList<Integer>();
     ArrayAdapter<Integer> adapterSoLuong;
 
-    public static DatHangDB db;
+
     static String getIdMon;
     static String getTenMon;
     static String getMoTa;
-    static int getImgMon;
-    static int getGia;
+    static String getImgMon;
+    static float getGia;
 
     //    public String getIdMon;
     @Override
@@ -79,24 +77,15 @@ public class ChiTietMonActivity extends AppCompatActivity {
         adapterSoLuong.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_soluong.setSelected(list_soluong.add(1));
         spinner_soluong.setAdapter(adapterSoLuong);
-        list_soluong.add(5);
-        list_soluong.add(10);
-        list_soluong.add(15);
-        list_soluong.add(20);
-        list_soluong.add(50);
-        list_soluong.add(100);
-
-//        db = new DatHangDB(this,"DatHangDB.sqlite",null,2);
-//        Cursor cursor = ChiTietMonActivity.db.getData("Select * from MonAn where idMon = "+getIdMon+"");
-//        String idMon = cursor.getString(0);
-//        String idDanhMuc = cursor.getString(1);
-//        String tenMon = cursor.getString(2);
-//        int imgMon = cursor.getInt(3);
-//        String moTa = cursor.getString(4);
-//        int gia = cursor.getInt(5);
+        for(int i=2;i<=10;i++)
+        {
+            list_soluong.add(i);
+        }
 
 
-        hinhmon_chitiet.setImageResource(getImgMon);
+
+        Picasso.get().load(getImgMon).into(hinhmon_chitiet);
+
         tenmon_chitiet.setText(getTenMon);
         gia_chitiet.setText(String.valueOf(getGia));
         mota_chitiet.setText(getMoTa);

@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.example.ttcm.R;
 import com.example.ttcm.data.Mon;
+import com.example.ttcm.model.Product;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -20,11 +22,11 @@ public class ChiTietDanhMucAdapter extends BaseAdapter {
     //1. ngữ cảnh của ứng dụng
     Activity activity;
     //2. nguồn dữ liệu
-    ArrayList<Mon> data;
+    ArrayList<Product> data;
     //3. bộ phân tích layout
     LayoutInflater inflater;
 
-    public ChiTietDanhMucAdapter(Activity activity, ArrayList<Mon> data) {
+    public ChiTietDanhMucAdapter(Activity activity, ArrayList<Product> data) {
         this.activity = activity;
         this.data = data;
         inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -57,10 +59,11 @@ public class ChiTietDanhMucAdapter extends BaseAdapter {
             TextView gia_danhmuc = v.findViewById(R.id.gia_danhmuc);
             TextView mota_danhmuc = v.findViewById(R.id.mota_danhmuc);
 
-            hinhmon_danhmuc.setImageResource(data.get(position).getHinhmon());
-            tenmon_danhmuc.setText(data.get(position).getTenmon());
-            gia_danhmuc.setText(String.valueOf(data.get(position).getGia()));
-            mota_danhmuc.setText(data.get(position).getMota());
+            Picasso.get().load(data.get(position).getUrlImage()).into(hinhmon_danhmuc);
+            //hinhmon_danhmuc.setImageResource(data.get(position).getUrlImage());
+            tenmon_danhmuc.setText(data.get(position).getName());
+            gia_danhmuc.setText(String.valueOf(data.get(position).getPrice()));
+            mota_danhmuc.setText(data.get(position).getTitle());
         }
         return v;
     }

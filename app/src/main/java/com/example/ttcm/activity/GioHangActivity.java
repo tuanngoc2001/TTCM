@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,8 +16,8 @@ import android.widget.TextView;
 
 import com.example.ttcm.R;
 import com.example.ttcm.adapter.MonAnAdapter;
-import com.example.ttcm.data.DatHangDB;
 import com.example.ttcm.data.MonAnThanhToan;
+import com.example.ttcm.model.Product;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -27,7 +26,7 @@ public class GioHangActivity extends AppCompatActivity {
 
     //    Toolbar toolbarGiohang;
     ListView listView;
-    public static ArrayList<MonAnThanhToan> arrayMonAn;
+    public static ArrayList<Product> arrayMonAn;
     MonAnAdapter adapter;
     ImageView imgMonAn,imgXoa;
     ImageButton imgCong,imgTru;
@@ -36,11 +35,10 @@ public class GioHangActivity extends AppCompatActivity {
     TextView txtSLmon, txtTenMon;
     static TextView txtTongTien;
     TextView txtThanhTien;
-    public static DatHangDB db;
     static String getTenMonThanhToan;
     static String getMoTaThanhToan;
-    static int getImgMonThanhToan;
-    static int getGiaThanhToan;
+    static String getImgMonThanhToan;
+    static Float getGiaThanhToan;
     static int getSLThanhToan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,25 +69,12 @@ public class GioHangActivity extends AppCompatActivity {
 
 
 
-        db = new DatHangDB(this,"DatHangDB.sqlite",null,2);
-//        db.queryData("Create table if not exists GioHang (TenMon Text, Gia int, soluong int, imgMon int)");
-        if(getTenMonThanhToan!=null)
-            db.inserGioHang(getTenMonThanhToan,getGiaThanhToan,getSLThanhToan,getImgMonThanhToan);
-        Cursor cursor = MainActivity.db.getData("Select * from GioHang");
-        while(cursor.moveToNext()){
 
-            String tenMon = cursor.getString(0);
-            int gia = cursor.getInt(1);
-            int sl = cursor.getInt(2);
-            int img = cursor.getInt(3);
-            arrayMonAn.add(new MonAnThanhToan(tenMon, gia,gia*sl,sl,img,R.drawable.ic_xoa,R.drawable.ic_daucong,R.drawable.ic_dautru));
-        }
 
-        // arrayMonAn.add(new MonAn("Cơm tấm sà bì chưởng","10000đ","40000đ","2",R.drawable.anhmon,R.drawable.daucong1,R.drawable.daucong1,R.drawable.daucong1));
-        //arrayMonAn.add(new MonAn(getTenMonThanhToan,String.valueOf(getGiaThanhToan),"test",String.valueOf(getSLThanhToan),getImgMonThanhToan,R.drawable.daucong1,R.drawable.daucong1,R.drawable.daucong1));
-        adapter = new MonAnAdapter(this,
-                R.layout.layout_giohang,
-                arrayMonAn);
+//        arrayMonAn.add(new MonAn(getTenMonThanhToan,String.valueOf(getGiaThanhToan),"test",String.valueOf(getSLThanhToan),getImgMonThanhToan,R.drawable.daucong1,R.drawable.daucong1,R.drawable.daucong1));
+//        adapter = new MonAnAdapter(this,
+//                R.layout.layout_giohang,
+//                arrayMonAn);
 
         listView.setAdapter(adapter);
         EvenUltil();
@@ -100,17 +85,17 @@ public class GioHangActivity extends AppCompatActivity {
                 return false;
             }
         });
-        btnThanhtoan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                db.queryData(
-                        "DELETE FROM GioHang"
-                );
-                arrayMonAn.clear();
-                adapter.notifyDataSetChanged();
-                EvenUltil();
-            }
-        });
+//        btnThanhtoan.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                db.queryData(
+//                        "DELETE FROM GioHang"
+//                );
+//                arrayMonAn.clear();
+//                adapter.notifyDataSetChanged();
+//                EvenUltil();
+//            }
+//        });
 //        (btnTiepTuc.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -141,8 +126,8 @@ public class GioHangActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 arrayMonAn.remove(posittion);
                 adapter.notifyDataSetChanged();
-                String name=arrayMonAn.get(posittion).getTenMon();
-                db.queryData("delete from GioHang where TenMon='+name+'");
+//                String name=arrayMonAn.get(posittion).getTenMon();
+
                 EvenUltil();
             }
         });
@@ -157,10 +142,10 @@ public class GioHangActivity extends AppCompatActivity {
     public static void EvenUltil()
     {
         long tongtien = 0;
-        for (int i=0;i<GioHangActivity.arrayMonAn.size();i++)
-        {
-            tongtien +=GioHangActivity.arrayMonAn.get(i).getGiaThanhTien()*GioHangActivity.arrayMonAn.get(i).getSoLuong();
-        }
+//        for (int i=0;i<GioHangActivity.arrayMonAn.size();i++)
+//        {
+//            tongtien +=GioHangActivity.arrayMonAn.get(i).getGiaThanhTien()*GioHangActivity.arrayMonAn.get(i).getSoLuong();
+//        }
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         txtTongTien.setText(decimalFormat.format(tongtien)+"đ");
     }

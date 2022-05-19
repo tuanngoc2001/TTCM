@@ -13,6 +13,8 @@ import com.example.ttcm.R;
 
 import com.example.ttcm.activity.GioHangActivity;
 import com.example.ttcm.data.MonAnThanhToan;
+import com.example.ttcm.model.Product;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -179,9 +181,9 @@ public class MonAnAdapter extends BaseAdapter {
 //    }
 private Context context;//màn hình của item
     private int layout;//mỗi dòng item của listview bạn muốn truyền cái layout nào
-    private ArrayList<MonAnThanhToan> monAnList;
+    private ArrayList<Product> monAnList;
 
-    public MonAnAdapter(Context context, int layout, ArrayList<MonAnThanhToan> monAnList) {
+    public MonAnAdapter(Context context, int layout, ArrayList<Product> monAnList) {
         this.context = context;
         this.layout = layout;
         this.monAnList = monAnList;
@@ -237,15 +239,16 @@ private Context context;//màn hình của item
 //            }
 //        });
 
-        MonAnThanhToan monAn = monAnList.get(i);
-        txtTenMon.setText(monAn.getTenMon());
-        txtGiaMon.setText(String.valueOf(monAn.getGiaMon()));
-        txtSoLuong.setText(String.valueOf(monAn.getSoLuong()));
-        txtThanhTien.setText(String.valueOf(monAn.getGiaThanhTien()));
-        imgMonAn.setImageResource(monAn.getHinhMonAn());
-        imgCong.setImageResource(monAn.getHinhCong());
-        imgXoa.setImageResource(monAn.getHinhXoa());
-        imgTru.setImageResource(monAn.getHinhTru());
+        //MonAnThanhToan monAn = monAnList.get(i);
+        txtTenMon.setText(monAnList.get(i).getName());
+        txtGiaMon.setText(String.valueOf(monAnList.get(i).getPrice()));
+        txtSoLuong.setText(String.valueOf(monAnList.get(i).getQuality()));
+        txtThanhTien.setText(String.valueOf(monAnList.get(i).getQuality()*monAnList.get(i).getPrice()));
+        Picasso.get().load(monAnList.get(i).getUrlImage()).into(imgMonAn);
+
+        imgCong.setImageResource(R.drawable.daucong1);
+        imgXoa.setImageResource(R.drawable.ic_dautru);
+        imgTru.setImageResource(R.drawable.ic_dautru);
 
 
 

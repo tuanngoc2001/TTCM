@@ -3,10 +3,10 @@ package com.example.ttcm.activity;
 public class MonAnTrangChu {
     private String Name;
     private String Decription;
-    private int Image;
-    private int Price;
+    private String Image;
+    private Float Price;
 
-    public MonAnTrangChu(String name, String decription, int image, int price) {
+    public MonAnTrangChu(String name, String decription, String image, Float price) {
         Name = name;
         Decription = decription;
         Image = image;
@@ -29,19 +29,19 @@ public class MonAnTrangChu {
         Decription = decription;
     }
 
-    public int getImage() {
+    public String getImage() {
         return Image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         Image = image;
     }
 
-    public int getPrice() {
+    public Float getPrice() {
         return Price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Float price) {
         Price = price;
     }
 }

@@ -13,10 +13,17 @@ import android.widget.TextView;
 
 import com.example.ttcm.R;
 import com.example.ttcm.adapter.ChiTietDanhMucAdapter;
-import com.example.ttcm.data.DatHangDB;
 import com.example.ttcm.data.Mon;
+import com.example.ttcm.model.Category;
+import com.example.ttcm.model.Product;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class ChiTietDanhMucActivity extends AppCompatActivity {
 
@@ -24,10 +31,9 @@ public class ChiTietDanhMucActivity extends AppCompatActivity {
     TextView thongbao_soluong;
 
     ListView lst_chitietdanhmuc;
-    ArrayList<Mon> list_Mon = new ArrayList<>();
+    ArrayList<Product> list_Mon = new ArrayList<>();
     ChiTietDanhMucAdapter adapter;
 
-    public static DatHangDB db;
 
     static String getIdDanhMuc;
     @Override
@@ -43,10 +49,10 @@ public class ChiTietDanhMucActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ChiTietDanhMucActivity.this,ChiTietMonActivity.class);
-                ChiTietMonActivity.getTenMon = list_Mon.get(position).getTenmon();
-                ChiTietMonActivity.getImgMon = list_Mon.get(position).getHinhmon();
-                ChiTietMonActivity.getGia = list_Mon.get(position).getGia();
-                ChiTietMonActivity.getMoTa = list_Mon.get(position).getMota();
+                ChiTietMonActivity.getTenMon = list_Mon.get(position).getName();
+                ChiTietMonActivity.getImgMon = list_Mon.get(position).getUrlImage();
+                ChiTietMonActivity.getGia = list_Mon.get(position).getPrice();
+                ChiTietMonActivity.getMoTa = list_Mon.get(position).getTitle();
                 startActivity(intent);
 
             }
@@ -74,20 +80,35 @@ public class ChiTietDanhMucActivity extends AppCompatActivity {
 //        list_Mon.add(new Mon(001,001,"Test",R.drawable.custom_input,"mota","15000"));
 
 
-        db = new DatHangDB(this,"DatHangDB.sqlite",null,2);
-        Cursor cursor = ChiTietDanhMucActivity.db.getData("Select * from MonAn where idDanhMuc = '"+getIdDanhMuc+"'")  ;
-        while(cursor.moveToNext()){
-            String idMon = cursor.getString(0);
-            String idDanhMuc = cursor.getString(1);
-            String tenMon = cursor.getString(2);
-            int imgMon = cursor.getInt(3);
-            String moTa = cursor.getString(4);
-            int gia = cursor.getInt(5);
-            list_Mon.add(new Mon(idMon, idDanhMuc, tenMon, imgMon, moTa, gia));
-        }
+//        db = new DatHangDB(this,"DatHangDB.sqlite",null,2);
+//        Cursor cursor = ChiTietDanhMucActivity.db.getData("Select * from MonAn where idDanhMuc = '"+getIdDanhMuc+"'")  ;
+//        while(cursor.moveToNext()){
+//            String idMon = cursor.getString(0);
+//            String idDanhMuc = cursor.getString(1);
+//            String tenMon = cursor.getString(2);
+//            int imgMon = cursor.getInt(3);
+//            String moTa = cursor.getString(4);
+//            int gia = cursor.getInt(5);
+//            list_Mon.add(new Mon(idMon, idDanhMuc, tenMon, imgMon, moTa, gia));
+//        }
         adapter = new ChiTietDanhMucAdapter(this,list_Mon);
         lst_chitietdanhmuc.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Product").whereEqualTo("IdCate",getIdDanhMuc).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                if(!queryDocumentSnapshots.isEmpty())
+                {
+                    List<DocumentSnapshot> lst=queryDocumentSnapshots.getDocuments();
+                    for(DocumentSnapshot item:lst)
+                    {
+                        list_Mon.add(new Product( Objects.requireNonNull(item.get("name")).toString(), Objects.requireNonNull(item.get("urlImage")).toString(),Float.parseFloat(Objects.requireNonNull(item.get("price")).toString()), Objects.requireNonNull(item.get("productType")).toString(),Integer.parseInt(Objects.requireNonNull(item.get("quality")).toString()), Objects.requireNonNull(item.get("title")).toString(),Integer.parseInt(Objects.requireNonNull(item.get("id")).toString()),Objects.requireNonNull(item.get("IdCate")).toString()));
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+            }
+        });
+
 
     }
 
